@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HelloWorldTest {
+public class GetCheckCookieTest {
 
     @Test
-    public void testRestAssured() {
+    public void testCheckGivenCookie() {
         Map<String, String> data = new HashMap<>();
         data.put("login", "secret_login");
         data.put("password", "secret_pass");

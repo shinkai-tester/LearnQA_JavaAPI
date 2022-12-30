@@ -1,3 +1,5 @@
+package simple_methods;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.jsoup.Jsoup;
@@ -20,7 +22,7 @@ public class GetSecretPwdTest {
 
         Elements elems = doc.select("#mw-content-text > div.mw-parser-output > table:nth-child(12) > tbody > tr > td").not("td:first-child");
 
-        HashSet<String> passwords = new HashSet<String>();
+        HashSet<String> passwords = new HashSet<>();
 
         for (Element e : elems) {
             passwords.add(e.text().replace("[a]", ""));

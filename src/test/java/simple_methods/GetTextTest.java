@@ -1,3 +1,5 @@
+package simple_methods;
+
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 

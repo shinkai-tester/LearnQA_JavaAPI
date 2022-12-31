@@ -1,4 +1,4 @@
-package simple_methods;
+package first_steps;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;

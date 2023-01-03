@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  test_runner:
+    build: .
+    image:  java_api_tests
+    container_name: java_runner_works
+    volumes:
+      - .:/tests/

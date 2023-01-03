@@ -11,9 +11,9 @@ public class ShortPhraseTest {
     @ValueSource(strings = {"Fourteen chars", "Exact fifteen:)", "Sixteen symbols!", ""})
     public void testShortPhrase(String text) {
 
-        assertTrue(text.length() < 15, "String '" + text + "' has length=" + text.length()
-                + ". Should be less than 15!");
         assertFalse(text.isEmpty(), "There is an empty string!");
+        assertTrue(text.length() > 15, "String '" + text + "' has length=" + text.length()
+                + ". Should be more than 15!");
     }
 }
 

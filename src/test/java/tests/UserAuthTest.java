@@ -43,8 +43,8 @@ public class UserAuthTest extends BaseTestCase {
     }
 
     @Test
-    @Description("This test checks successfully authorization of user by email and password")
-    @DisplayName("Test positive auth user")
+    @Description("This test successfully authorizes user by email and password")
+    @DisplayName("Successful user authorization")
     public void testAuthUser() {
         Response responseCheckAuth = apiCoreRequests.makeGetRequest(
                 "https://playground.learnqa.ru/api/user/auth",
@@ -56,7 +56,7 @@ public class UserAuthTest extends BaseTestCase {
     }
 
     @Description("This test checks authorization status w/o sending auth cookie or token")
-    @DisplayName("Test negative auth user")
+    @DisplayName("Unsuccessful user authorization: w/o sending auth cookie or token")
     @ParameterizedTest
     @ValueSource(strings = {"cookie", "headers"})
     public void testNegativeAuthUser(String condition) {

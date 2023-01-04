@@ -38,6 +38,14 @@ public class ApiCoreRequests {
                 .andReturn();
     }
 
+    @Step("Make a GET-request with user id")
+    public Response makeGetRequestWithUserId(String url, String userId) {
+        return given()
+                .filter(new AllureRestAssured())
+                .get(url + userId)
+                .andReturn();
+    }
+
     @Step("Make a POST-request")
     public Response makePostRequest(String url, Map<String, String> data) {
         return given()

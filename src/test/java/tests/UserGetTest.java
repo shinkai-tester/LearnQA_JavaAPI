@@ -23,8 +23,8 @@ public class UserGetTest extends BaseTestCase {
     @Description("Check that it is possible to get only username of the user if you are not authorized")
     @DisplayName("Get user details as not authorized user")
     public void testGetUserDataNotAuth() {
-        Response responseUserData = apiCoreRequests.makeGetRequestWithUserId(
-                "https://playground.learnqa.ru/api/user/", "2"
+        Response responseUserData = apiCoreRequests.makeNotAuthGetRequest(
+                "https://playground.learnqa.ru/api/user/2"
         );
 
         String[] missingFields = {"firstName", "lastName", "email"};

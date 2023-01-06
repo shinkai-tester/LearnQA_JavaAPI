@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -14,12 +12,14 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("Get user cases")
-@Feature("Get user details")
+@Epic("DEMMGT-123 Open user API basic methods")
+@Feature("Get user details cases")
 public class UserGetTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
     @Test
+    @Story("STORY-8")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check that it is possible to get only username of the user if you are not authorized")
     @DisplayName("Get user details as not authorized user")
     public void testGetUserDataNotAuth() {
@@ -34,6 +34,8 @@ public class UserGetTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-8")
+    @Severity(SeverityLevel.BLOCKER)
     @Description("Check that logged in user can get own data (username, email, firstName, lastName)")
     @DisplayName("Get own details when you are authorized")
     public void testGetUserDetailsAuthAsSameUser() {
@@ -57,6 +59,8 @@ public class UserGetTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-9")
+    @Severity(SeverityLevel.NORMAL)
     @Description("Check that authorized User1 can see only the username of User2")
     @DisplayName("Get User2 details as auth User1")
     public void testGetUserDetailsAsAnotherUser() {

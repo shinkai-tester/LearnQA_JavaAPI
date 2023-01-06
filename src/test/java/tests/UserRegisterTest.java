@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -17,12 +15,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("Registration cases")
-@Feature("Registration")
+@Epic("DEMMGT-123 Open user API basic methods")
+@Feature("Registration cases")
 public class UserRegisterTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
     @Test
+    @Story("STORY-10")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check that it is not possible to register a user with an existing email")
     @DisplayName("Unsuccessful user registration: existing email")
     public void testCreateUserWithExistingEmail() {
@@ -39,6 +39,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-11")
+    @Severity(SeverityLevel.BLOCKER)
     @Description("Check that it is possible to register user with email, password, username, firstName and lastName")
     @DisplayName("Successful user registration")
     public void testCreateUserSuccessfully() {
@@ -51,6 +53,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-12")
+    @Severity(SeverityLevel.NORMAL)
     @Description("Check that it is not possible to register a user with an email w/o @ sign")
     @DisplayName("Unsuccessful user registration: email w/o @ sign")
     public void testCreateUserBadEmail() {
@@ -68,6 +72,8 @@ public class UserRegisterTest extends BaseTestCase {
 
     @ParameterizedTest
     @ValueSource(strings = {"username", "firstName", "lastName", "email", "password"})
+    @Story("STORY-12")
+    @Severity(SeverityLevel.NORMAL)
     @Description("Check that it is not possible to register a user if one of the parameters is missing")
     @DisplayName("Unsuccessful user registration: missing parameter")
     public void testCreateWithoutOneParam(String parameter) {
@@ -82,6 +88,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-12")
+    @Severity(SeverityLevel.MINOR)
     @Description("Check that it is not possible to register a user with firstName length = 1 char")
     @DisplayName("Unsuccessful user registration: firstName length=1")
     public void testCreateUserWithTooShortFirstname() {
@@ -98,6 +106,8 @@ public class UserRegisterTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-10")
+    @Severity(SeverityLevel.MINOR)
     @Description("Check that it is not possible to register a user with length of firstName > 250 symbols")
     @DisplayName("Unsuccessful user registration: firstName length > 250")
     public void testCreateUserWithTooLongFirstname() {

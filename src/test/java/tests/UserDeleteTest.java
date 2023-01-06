@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -16,8 +14,8 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Epic("Deletion cases")
-@Feature("User deletion")
+@Epic("DEMMGT-123 Open user API basic methods")
+@Feature("User deletion cases")
 public class UserDeleteTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
@@ -29,6 +27,8 @@ public class UserDeleteTest extends BaseTestCase {
     int superUserId = 2;
 
     @Test
+    @Story("STORY-3")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check the deletion of the user with specific IDs")
     @DisplayName("Unsuccessful user deletion: ID=2")
     public void testDeleteUserWithIdTwo() {
@@ -57,6 +57,8 @@ public class UserDeleteTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-4")
+    @Severity(SeverityLevel.BLOCKER)
     @Description("Check that the authorized user can delete own data")
     @DisplayName("Successful user deletion")
     public void testDeleteUser() {
@@ -123,6 +125,8 @@ public class UserDeleteTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-5")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check that the user can't delete other user")
     @DisplayName("Deletion by other user")
     public void testDeleteUserByOther() {

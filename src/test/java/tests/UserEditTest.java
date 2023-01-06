@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
@@ -15,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@Epic("Edit cases")
-@Feature("User data update")
+@Epic("DEMMGT-123 Open user API basic methods")
+@Feature("User data update cases")
 public class UserEditTest extends BaseTestCase {
 
     String email;
@@ -28,6 +26,7 @@ public class UserEditTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
     @BeforeEach
+    @Step("New user registration")
     public void registerUser() {
         Map<String, String> userData = DataGenerator.getRegistrationData();
 
@@ -46,6 +45,8 @@ public class UserEditTest extends BaseTestCase {
         this.userId = this.getIntFromJson(responseCreateAuth, "id");
     }
     @Test
+    @Story("STORY-6")
+    @Severity(SeverityLevel.BLOCKER)
     @Description("Check that user can update own data (firstName)")
     @DisplayName("Successful data update: firstName")
     public void testEditJustCreatedUser() {
@@ -84,6 +85,8 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-6")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check that user data can't be edited if user is not authorized")
     @DisplayName("Unsuccessful data update: unauthorized user")
     public void testEditUserNotAuth() {
@@ -121,6 +124,8 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-7")
+    @Severity(SeverityLevel.NORMAL)
     @Description("Check that user email can't be changed to the value w/o @ sign")
     @DisplayName("Unsuccessful data update: email w/o @ sign")
     public void testEditUserBadEmail() {
@@ -162,6 +167,8 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-7")
+    @Severity(SeverityLevel.MINOR)
     @Description("Check that firstName can't be changed to the value with length=1")
     @DisplayName("Unsuccessful data update: firstName length=1")
     public void testEditUserTooShortFirstname() {
@@ -204,6 +211,8 @@ public class UserEditTest extends BaseTestCase {
     }
 
     @Test
+    @Story("STORY-7")
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Check that authorized User1 can't change the data of User2")
     @DisplayName("Unsuccessful data update: update User2 data as auth User1")
     public void testEditUserAsOtherUser() {

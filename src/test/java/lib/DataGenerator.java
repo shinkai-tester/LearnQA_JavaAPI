@@ -2,7 +2,6 @@ package lib;
 
 import com.github.javafaker.Faker;
 
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +9,7 @@ public class DataGenerator {
     static Faker faker = new Faker();
 
     public static String getRandomEmail() {
-        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
-        return "learnqa" + timestamp + "@example.com";
+        return faker.internet().safeEmailAddress();
     }
 
     public static String getRandomUsername() {
